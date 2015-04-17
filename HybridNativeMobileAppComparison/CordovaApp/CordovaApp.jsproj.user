@@ -3,4 +3,7 @@
   <PropertyGroup>
     <ReferenceCachePath>C:\Users\Kristers\AppData\Local\Temp\CordovaApp_refcache</ReferenceCachePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <DebuggerFlavor>RippleNexus</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
