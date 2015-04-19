@@ -1,0 +1,14 @@
+﻿<ion-view view-title="Note">
+    <ion-content>
+        <h1 class="title">{{notebookTitle}}</h1>
+        <h2>{{note.title}}</h2>
+        <p>{{note.description}}</p>
+        <p>{{note.timestamp}}</p>
+
+        <div class="padding-vertical">
+            <button class="button" ng-click="getPhoto()">Take a picture</button>
+        </div>
+
+        <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+    </ion-content>
+</ion-view>

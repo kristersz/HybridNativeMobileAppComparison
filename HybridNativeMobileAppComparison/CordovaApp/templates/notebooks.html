@@ -1,0 +1,13 @@
+﻿<ion-view view-title="Notebooks">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="notebook in notebooks" ng-href="#/app/notebooks/{{notebook.id}}">
+                {{notebook.title}}
+            </ion-item>
+        </ion-list>
+
+        <div class="padding-vertical">
+            <button class="button icon ion-plus-round" ng-click="showDetails()"></button>
+        </div>
+    </ion-content>
+</ion-view>
