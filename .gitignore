@@ -21,6 +21,10 @@ $RECYCLE.BIN/
 bin/
 bld/
 
+#Visual Studio Solution User Options files
+*.suo
+*.user
+
 # =========================
 # Operating System Files
 # =========================
