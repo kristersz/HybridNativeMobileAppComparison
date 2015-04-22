@@ -1,0 +1,25 @@
+﻿<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Create new contact</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="createContact()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Display name</span>
+                    <input type="text" ng-model="contactData.displayName">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Mobile</span>
+                    <input type="tel" ng-model="contactData.mobile">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Save</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

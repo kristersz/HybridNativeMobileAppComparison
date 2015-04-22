@@ -1,0 +1,13 @@
+﻿<ion-view view-title="Accelerometer">
+    <ion-content>
+        <div class="padding">
+            <button class="button" ng-click="watch()" ng-show="start">Start watching acceleration</button>
+            <button class="button" ng-click="stopWatching()" ng-show="!start">Stop watching acceleration</button>
+        </div>
+
+        <p>Acceleration X: {{acceleration.x}}</p>
+        <p>Acceleration Y: {{acceleration.y}}</p>
+        <p>Acceleration Z: {{acceleration.z}}</p>
+        <p>Timestamp: {{acceleration.timestamp}}</p>
+    </ion-content>
+</ion-view>

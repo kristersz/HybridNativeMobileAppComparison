@@ -4318,6 +4318,10 @@ function viewportTagUpdate() {
     }
   }
 
+  if (!viewportTag) {
+      viewportTag = {};
+  }
+
   viewportTag.content = props.join(', ');
 }
 

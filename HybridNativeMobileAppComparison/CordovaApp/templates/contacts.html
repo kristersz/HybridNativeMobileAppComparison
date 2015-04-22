@@ -1,0 +1,19 @@
+﻿<ion-view view-title="Contacts">
+    <ion-content>
+        <div class="padding">
+            <button class="button" ng-click="create()">Create contact</button>
+        </div>
+
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="searchFilter.name" placeholder="Any contact name">
+            </label>
+            <button class="button button-block button-positive" ng-click="searchContacts()">Search contacts</button>
+        </div>
+
+        <ion-item ng-repeat="contact in foundContacts">
+            {{contact.displayName}} - {{contact.phoneNumbers[0].value}}
+        </ion-item>
+    </ion-content>
+</ion-view>

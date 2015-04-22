@@ -13,6 +13,7 @@
         document.addEventListener( 'resume', onResume.bind( this ), false );
         
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+        cordova.plugins.Keyboard.disableScroll(true);
     };
 
     function onPause() {

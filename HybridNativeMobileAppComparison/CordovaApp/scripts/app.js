@@ -33,53 +33,48 @@ angular.module('cordovaApp', ['ionic', 'cordovaApp.controllers', 'cordovaApp.ser
         controller: 'AppController'
     })
 
-    .state('app.search', {
-        url: "/search",
+    .state('app.camera', {
+        url: "/camera",
         views: {
             'menuContent': {
-                templateUrl: "templates/search.html"
+                templateUrl: "templates/camera.html",
+                controller: 'CameraController'
             }
         }
     })
 
-     .state('app.browse', {
-         url: "/browse",
-         views: {
-             'menuContent': {
-                 templateUrl: "templates/browse.html"
-             }
-         }
-     })
-
-      .state('app.notebooks', {
-          url: "/notebooks",
-          views: {
-              'menuContent': {
-                  templateUrl: "templates/notebooks.html",
-                  controller: 'NotebooksController'
-              }
-          }
-      })
-
-    .state('app.singleNotebook', {
-        url: "/notebooks/:notebookId",
+    .state('app.accelerometer', {
+        url: "/accelerometer",
         views: {
             'menuContent': {
-                templateUrl: "templates/notebook.html",
-                controller: 'NotebookController'
+                templateUrl: "templates/accelerometer.html",
+                controller: 'AccelerometerController'
             }
         }
     })
 
-    .state('app.singleNote', {
-        url: "/notes/:noteId",
+    .state('app.battery', {
+        url: "/battery",
         views: {
             'menuContent': {
-                templateUrl: "templates/note.html",
-                controller: 'NoteController'
+                templateUrl: "templates/battery.html",
+                controller: 'BatteryController'
             }
         }
-    });
+    })
+
+    .state('app.contacts', {
+        url: "/contacts",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/contacts.html",
+                controller: 'ContactsController'
+            }
+        }
+    })
+
+    ;
+
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/notebooks');
+    $urlRouterProvider.otherwise('/app/camera');
 });
