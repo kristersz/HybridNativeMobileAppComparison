@@ -33,6 +33,15 @@ angular.module('cordovaApp', ['ionic', 'cordovaApp.controllers', 'cordovaApp.ser
         controller: 'AppController'
     })
 
+    .state('app.main', {
+        url: "/main",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/main.html"
+            }
+        }
+    })
+
     .state('app.camera', {
         url: "/camera",
         views: {
@@ -73,8 +82,46 @@ angular.module('cordovaApp', ['ionic', 'cordovaApp.controllers', 'cordovaApp.ser
         }
     })
 
-    ;
+    .state('app.device', {
+        url: "/device",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/device.html",
+                controller: 'DeviceController'
+            }
+        }
+    })
+
+    .state('app.compass', {
+        url: "/compass",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/compass.html",
+                controller: 'CompassController'
+            }
+        }
+    })
+
+    .state('app.geolocation', {
+        url: "/geolocation",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/geolocation.html",
+                controller: 'GeolocationController'
+            }
+        }
+    })
+
+    .state('app.vibration', {
+        url: "/vibration",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/vibration.html",
+                controller: 'VibrationController'
+            }
+        }
+    });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/camera');
+    $urlRouterProvider.otherwise('/app/main');
 });

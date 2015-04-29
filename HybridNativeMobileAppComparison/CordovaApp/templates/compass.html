@@ -1,0 +1,17 @@
+﻿<ion-view view-title="Compass">
+    <ion-content>
+        <div class="padding">
+            <button class="button" ng-click="watch()" ng-show="start">Start watching heading</button>
+            <button class="button" ng-click="stopWatching()" ng-show="!start">Stop watching heading</button>
+        </div>
+
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p>Magnetic heading: {{heading.magneticHeading}}</p>
+                <p>True heading: {{heading.trueHeading}}</p>
+                <p>Accuracy: {{heading.headingAccuracy}}</p>
+                <p>Timestamp: {{heading.timestamp}}</p>
+            </div>
+        </div>      
+    </ion-content>
+</ion-view>

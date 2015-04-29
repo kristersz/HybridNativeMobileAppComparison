@@ -5,9 +5,13 @@
             <button class="button" ng-click="stopWatching()" ng-show="!start">Stop watching acceleration</button>
         </div>
 
-        <p>Acceleration X: {{acceleration.x}}</p>
-        <p>Acceleration Y: {{acceleration.y}}</p>
-        <p>Acceleration Z: {{acceleration.z}}</p>
-        <p>Timestamp: {{acceleration.timestamp}}</p>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p>Acceleration X: {{acceleration.x}}</p>
+                <p>Acceleration Y: {{acceleration.y}}</p>
+                <p>Acceleration Z: {{acceleration.z}}</p>
+                <p>Timestamp: {{acceleration.timestamp}}</p>
+            </div>
+        </div>      
     </ion-content>
 </ion-view>
