@@ -14,6 +14,12 @@
         
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         cordova.plugins.Keyboard.disableScroll(true);
+
+        StatusBar.backgroundColorByHexString("#333");
+
+        // for ripple
+        var annoyingDialog = parent.document.getElementById('exec-dialog');
+        if (annoyingDialog) annoyingDialog.outerHTML = "";
     };
 
     function onPause() {

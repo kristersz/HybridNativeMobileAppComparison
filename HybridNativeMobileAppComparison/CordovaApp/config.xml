@@ -20,5 +20,8 @@
   <vs:plugin name="org.apache.cordova.network-information" version="0.2.12" />
   <vs:plugin name="org.apache.cordova.vibration" version="0.3.11" />
   <vs:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+  <vs:plugin name="org.apache.cordova.globalization" version="0.3.1" />
+  <vs:plugin name="org.apache.cordova.statusbar" version="0.1.8" />
+  <vs:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
   <vs:platformSpecificValues />
 </widget>
