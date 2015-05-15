@@ -120,6 +120,56 @@ angular.module('cordovaApp', ['ionic', 'cordovaApp.controllers', 'cordovaApp.ser
                 controller: 'VibrationController'
             }
         }
+    })
+
+    .state('app.globalization', {
+        url: "/globalization",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/globalization.html",
+                controller: 'GlobalizationController'
+            }
+        }
+    })
+
+    .state('app.notifications', {
+        url: "/notifications",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/notifications.html",
+                controller: 'NotificationsController'
+            }
+        }
+    })
+
+    .state('app.inappbrowser', {
+        url: "/inappbrowser",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/inappbrowser.html",
+                controller: 'InAppBrowserController'
+            }
+        }
+    })
+
+    .state('app.ui', {
+        url: "/ui",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/UI.html",
+                controller: 'UIController'
+            }
+        }
+    })
+
+    .state('app.events', {
+        url: "/ui/events",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/events.html",
+                controller: 'EventsController'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback

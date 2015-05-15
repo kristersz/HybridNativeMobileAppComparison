@@ -1,27 +1,7 @@
 ﻿angular.module('cordovaApp.controllers', [])
 
 .controller('AppController', function ($scope, $ionicActionSheet, $timeout) {
-    // Triggered on a button click, or some other target
-    $scope.showDetails = function () {
-
-        // Show the action sheet
-        var hideSheet = $ionicActionSheet.show({
-            buttons: [
-              { text: 'Camera' },
-              { text: 'Attachment' },
-              { text: 'Voice recording' },
-              { text: 'Text note' }
-            ],
-            titleText: 'Add new note',
-            cancelText: 'Cancel',
-            cancel: function () {
-                return true;
-            },
-            buttonClicked: function (index) {
-                return true;
-            }
-        });
-    };
+    
 })
 
 .controller('CameraController', function ($scope, Camera) {
@@ -98,7 +78,7 @@
         $scope.start = true;
 
         console.log('Stopped watching acceleration');
-    };    
+    };
 })
 
 .controller('BatteryController', function ($scope, $ionicPopup) {
@@ -350,11 +330,288 @@
         });
     }, function (err) {
         console.err(err);
-    });   
+    });
 })
 
 .controller('VibrationController', function ($scope) {
     $scope.vibrate = function () {
         navigator.vibrate(3000);
+    };
+})
+
+.controller('GlobalizationController', function ($scope) {
+    $scope.globalization = {};
+    $scope.globalization.monthNames = "";
+
+    navigator.globalization.getPreferredLanguage(
+        function (language) {
+            console.log('language: ' + language.value + '\n');
+
+            $scope.globalization.prefLang = language.value;
+        },
+        function () { console.log('Error getting language\n'); }
+    );
+
+    navigator.globalization.getLocaleName(
+        function (locale) {
+            console.log('locale: ' + locale.value + '\n');
+
+            $scope.globalization.locale = locale.value;
+        },
+        function () { console.log('Error getting locale\n'); }
+    );
+
+    navigator.globalization.dateToString(
+        new Date(),
+        function (date) {
+            console.log('date: ' + date.value + '\n');
+
+            $scope.globalization.dateToString = date.value;
+        },
+        function () { console.log('Error getting dateString\n'); },
+        { formatLength: 'short', selector: 'date and time' }
+    );
+
+    navigator.globalization.getCurrencyPattern(
+        'EUR',
+        function (pattern) {
+            console.log('pattern: ' + pattern.pattern + '\n' +
+                  'code: ' + pattern.code + '\n' +
+                  'fraction: ' + pattern.fraction + '\n' +
+                  'rounding: ' + pattern.rounding + '\n' +
+                  'decimal: ' + pattern.decimal + '\n' +
+                  'grouping: ' + pattern.grouping);
+
+            $scope.globalization.currencyPattern = pattern.pattern;
+        },
+        function () { console.log('Error getting pattern\n'); }
+    );
+
+    navigator.globalization.getDateNames(
+        function (names) {
+            for (var i = 0; i < names.value.length; i++) {
+                console.log('month: ' + names.value[i] + '\n');
+
+                $scope.globalization.monthNames += names.value[i] + ', ';
+            }
+        },
+        function () { console.log('Error getting names\n'); },
+        { type: 'wide', item: 'months' }
+    );
+
+    navigator.globalization.getDatePattern(
+        function (date) {
+            console.log('pattern: ' + date.pattern + '\n');
+
+            $scope.globalization.datePattern = date.pattern;
+        },
+        function () { console.log('Error getting pattern\n'); },
+        { formatLength: 'short', selector: 'date and time' }
+    );
+
+    navigator.globalization.getFirstDayOfWeek(
+        function (day) {
+            console.log('day: ' + day.value + '\n');
+
+            $scope.globalization.firstDayOfWeek = day.value;
+        },
+        function () { onsole.log('Error getting day\n'); }
+    );
+
+    navigator.globalization.getNumberPattern(
+        function (pattern) {
+            console.log('pattern: ' + pattern.pattern + '\n' +
+                  'symbol: ' + pattern.symbol + '\n' +
+                  'fraction: ' + pattern.fraction + '\n' +
+                  'rounding: ' + pattern.rounding + '\n' +
+                  'positive: ' + pattern.positive + '\n' +
+                  'negative: ' + pattern.negative + '\n' +
+                  'decimal: ' + pattern.decimal + '\n' +
+                  'grouping: ' + pattern.grouping);
+
+            $scope.globalization.numberPattern = pattern.pattern;
+        },
+        function () { console.log('Error getting pattern\n'); },
+        { type: 'decimal' }
+    );
+
+    navigator.globalization.isDayLightSavingsTime(
+        new Date(),
+        function (date) {
+            console.log('dst: ' + date.dst + '\n');
+
+            $scope.globalization.isDayLightSavingsTime = date.dst;
+        },
+        function () { console.log('Error getting names\n'); }
+    );
+
+    navigator.globalization.numberToString(
+        3.1415926,
+        function (number) {
+            console.log('number: ' + number.value + '\n');
+
+            $scope.globalization.numberToString = number.value;
+        },
+        function () { console.log('Error getting number\n'); },
+        { type: 'decimal' }
+    );
+
+    navigator.globalization.stringToDate(
+        '9/25/2012',
+        function (date) {
+            console.log('month:' + date.month +
+                  ' day:' + date.day +
+                  ' year:' + date.year + '\n');
+
+            $scope.globalization.stringToDate = date;
+        },
+        function () { console.log('Error getting date\n'); },
+        { selector: 'date' }
+    );
+
+    navigator.globalization.stringToNumber(
+        '1234.56',
+        function (number) {
+            console.log('number: ' + number.value + '\n');
+
+            $scope.globalization.stringToNumber = number.value;
+        },
+        function () { console.log('Error getting number\n'); },
+        { type: 'decimal' }
+    );
+})
+
+.controller('NotificationsController', function ($scope) {
+    function alertDismissed() {
+        console.log('Alert dismissed');
+    }
+
+    $scope.showAlert = function () {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    function onConfirm(buttonIndex) {
+        console.log('You selected button ' + buttonIndex);
+    }
+
+    $scope.showConfirm = function () {
+        navigator.notification.confirm(
+            'You are the winner!', // message
+             onConfirm,            // callback to invoke with index of button pressed
+            'Game Over',           // title
+            ['Restart', 'Exit']     // buttonLabels
+        );
+    }
+
+    function onPrompt(results) {
+        console.log("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    }
+
+    $scope.showPrompt = function () {
+        navigator.notification.prompt(
+            'Please enter your name',  // message
+            onPrompt,                  // callback to invoke
+            'Registration',            // title
+            ['Ok', 'Exit'],             // buttonLabels
+            'Jane Doe'                 // defaultText
+        );
+    }
+
+    $scope.beep = function () {
+        navigator.notification.beep(2);
+    }
+})
+
+.controller('InAppBrowserController', function ($scope) {
+    $scope.obj = {};
+
+    $scope.openUrl = function () {
+        var ref = cordova.InAppBrowser.open($scope.obj.url, '_blank', 'location=yes');
+    }  
+})
+
+.controller('UIController', function ($scope, $ionicActionSheet, $timeout, $ionicBackdrop, $ionicLoading) {
+    // Triggered on a button click, or some other target
+    $scope.showActionSheet = function () {
+        // Show the action sheet
+        var hideSheet = $ionicActionSheet.show({
+            buttons: [
+              { text: '<b>Share</b> This' },
+              { text: 'Move' }
+            ],
+            destructiveText: 'Delete',
+            titleText: 'Modify your album',
+            cancelText: 'Cancel',
+            cancel: function () {
+                // add cancel code..
+            },
+            buttonClicked: function (index) {
+                return true;
+            }
+        });
+
+        // For example's sake, hide the sheet after two seconds
+        $timeout(function () {
+            hideSheet();
+        }, 3000);
+    };
+
+    $scope.showBackdrop = function () {
+        $ionicBackdrop.retain();
+        $timeout(function () {
+            $ionicBackdrop.release();
+        }, 3000);
+    }
+
+    $scope.showLoading = function () {
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 3000);
+    };
+})
+
+.controller('EventsController', function ($scope, $ionicPopup) {
+    $scope.onHold = function () {
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'YOU HELD ME!'
+        });
+    };
+
+    $scope.onTap = function () {
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'YOU TAPPED ME!'
+        });
+    };
+
+    $scope.onDoubleTap = function () {
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'YOU DOUBLE TAPPED ME!'
+        });
+    };
+
+    $scope.onDrag = function () {
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'YOU DRAGGED ME!'
+        });
+    };
+
+    $scope.onSwipe = function () {
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'YOU SWIPED ME!'
+        });
     };
 });
